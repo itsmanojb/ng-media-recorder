@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AudioRecordingService } from '../../services/audio-recording.service';
 
@@ -95,17 +95,6 @@ export class AudioRecorderComponent implements OnInit {
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
-  }
-
-  toggleAudioPlay() {
-    const music = <HTMLMediaElement>document.getElementById('audioPlayer');
-    if (music.paused) {
-      music.play();
-      this.isPlaying = true;
-    } else {
-      music.pause();
-      this.isPlaying = false;
-    }
   }
 
   continue() { }

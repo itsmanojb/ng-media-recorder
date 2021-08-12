@@ -1,0 +1,109 @@
+.ui {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.recorder {
+  width: 100%;
+  margin-inline: auto;
+  height: clamp(280px, 40vw, 360px);
+  display: flex;
+  flex-direction: column;
+
+  .preview {
+    background-color: #000;
+    flex: 1;
+    position: relative;
+
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &.view {
+        height: calc(100% - 36px);
+      }
+    }
+
+    .controller {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 5px;
+      background-color: rgba($color: #000000, $alpha: 0.6);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      min-height: 36px;
+
+      button {
+        height: 48px;
+        width: 48px;
+        cursor: pointer;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: #eee;
+        outline: none;
+        transition: 0.2s all;
+        border: none;
+        margin: 5px 0;
+        color: hsl(0, 100, 40%);
+
+        &.recording {
+          color: #fff;
+          background-color: hsl(0, 100, 40%);
+        }
+      }
+
+      .timer {
+        font-size: 13px;
+        color: #fff;
+      }
+
+      &.multi {
+        flex-direction: row;
+        justify-content: space-between;
+
+        button {
+          background: transparent;
+          font-size: 16px;
+          color: #fff;
+          padding: 0;
+          height: 20px;
+          width: 70px;
+          border-radius: 0;
+
+          &.cancel {
+            color: #aaa;
+          }
+
+          &.save {
+            width: 90px;
+          }
+        }
+      }
+    }
+  }
+}

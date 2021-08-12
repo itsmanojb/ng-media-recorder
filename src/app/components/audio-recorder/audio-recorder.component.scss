@@ -1,3 +1,12 @@
+.ui {
+  position: fixed;
+  inset: 0;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  display: grid;
+  place-content: center;
+}
+
+
 .round-btn {
   height: 64px;
   width: 64px;
@@ -10,14 +19,6 @@
   background: #eee;
   outline: none;
   transition: 0.2s all;
-}
-
-.ui {
-  position: fixed;
-  inset: 0;
-  background-color: rgba($color: #000000, $alpha: 0.5);
-  display: grid;
-  place-content: center;
 }
 
 .recorder {

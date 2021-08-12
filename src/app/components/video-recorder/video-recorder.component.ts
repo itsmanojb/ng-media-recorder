@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { VideoRecordingService } from '../../services/video-recording.service';
 
@@ -8,7 +8,6 @@ import { VideoRecordingService } from '../../services/video-recording.service';
   styleUrls: ['./video-recorder.component.scss']
 })
 export class VideoRecorderComponent implements OnInit {
-
 
   @ViewChild('videoElement', { static: true }) videoElement: any;
 
@@ -55,6 +54,15 @@ export class VideoRecorderComponent implements OnInit {
   ngOnInit() {
     this.video = this.videoElement.nativeElement;
   }
+
+  toggleRecording() {
+    if (!this.isVideoRecording) {
+      this.startVideoRecording();
+    } else {
+      this.stopVideoRecording();
+    }
+  }
+
 
   startVideoRecording() {
     if (!this.isVideoRecording) {
@@ -112,5 +120,8 @@ export class VideoRecorderComponent implements OnInit {
     anchor.click();
     document.body.removeChild(anchor);
   }
+
+
+  continue() { }
 
 }
