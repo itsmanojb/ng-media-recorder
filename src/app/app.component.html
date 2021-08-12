@@ -1,44 +1,12 @@
-<div id="my-app">
-  <div>
-    <div>Audio</div>
-    <div>
-      <button class="start-button" *ngIf="!isAudioRecording && !audioBlobUrl" (click)="startAudioRecording()">Start
-        Audio Recording</button>
-      <button class="stop-button" *ngIf="isAudioRecording && !audioBlobUrl" (click)="stopAudioRecording()">Stop Audio
-        Recording</button>
-      <button class="cancel-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="clearAudioRecordedData()">Clear
-        Audio Recording</button>
-      <button class="download-button" *ngIf="!isAudioRecording && audioBlobUrl"
-        (click)="downloadAudioRecordedData()">Download Audio Recording</button>
-      <div id="audioTimer" *ngIf="isAudioRecording && !audioBlobUrl"> {{ audioRecordedTime }} </div>
-      <audio *ngIf="!isAudioRecording && audioBlobUrl" controls>
-        <source [src]="audioBlobUrl" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-  <div>
-    <div>Video</div>
-    <div>
-      <button class="start-button" *ngIf="!isVideoRecording && !videoBlobUrl" (click)="startVideoRecording()">Start
-        Video Recording</button>
-      <button class="stop-button" *ngIf="isVideoRecording && !videoBlobUrl" (click)="stopVideoRecording()">Stop Video
-        Recording</button>
-      <button class="cancel-button" *ngIf="!isVideoRecording && videoBlobUrl" (click)="clearVideoRecordedData()">Clear
-        Video Recording</button>
-      <button class="download-button" *ngIf="!isVideoRecording && videoBlobUrl"
-        (click)="downloadVideoRecordedData()">Download Video Recording</button>
-      <div id="videoTimer" *ngIf="isVideoRecording && !videoBlobUrl"> {{ videoRecordedTime }} </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="text-center">
-        <h3>
-          <video #videoElement>
-            <source *ngIf="!isVideoRecording && videoBlobUrl" [src]="videoBlobUrl">
-          </video>
-        </h3>
-      </div>
-    </div>
-  </div>
-</div>
+<main>
+  <button type="button" (click)="showRecorder('A')">
+    <ion-icon name="mic"></ion-icon>
+    Record Audio
+  </button>
+  <button type="button" (click)="showRecorder('V')">
+    <ion-icon name="videocam"></ion-icon>
+    Record Video
+  </button>
+</main>
+<app-audio-recorder *ngIf="recordMedia === 'A'"></app-audio-recorder>
+<app-video-recorder *ngIf="recordMedia === 'V'"></app-video-recorder>

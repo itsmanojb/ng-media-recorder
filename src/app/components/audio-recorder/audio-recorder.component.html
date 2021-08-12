@@ -1,0 +1,32 @@
+<div class="ui">
+  <div class="wrapper">
+    <div class="recorder">
+      <div class="icon">
+        <div class="record-btn" *ngIf="!audioBlobUrl" [class.recording]="isAudioRecording" role="button"
+          (click)="toggleRecording()">
+          <ion-icon [name]="isAudioRecording ? 'stop' : 'mic-outline'"></ion-icon>
+        </div>
+        <div class="play-btn" *ngIf="audioBlobUrl">
+          <ion-icon name="play"></ion-icon>
+        </div>
+      </div>
+      <div class="timer" id="audioTimer" *ngIf="isAudioRecording && !audioBlobUrl">{{ audioRecordedTime }}</div>
+      <!-- <button class="start-button" *ngIf="!isAudioRecording && !audioBlobUrl" (click)="startAudioRecording()">Start
+        Audio Recording</button> -->
+      <!-- <button class="stop-button" *ngIf="isAudioRecording && !audioBlobUrl" (click)="stopAudioRecording()">Stop Audio
+          Recording</button> -->
+      <!-- <button class="download-button" *ngIf="!isAudioRecording && audioBlobUrl"
+            (click)="downloadAudioRecordedData()">Download Audio Recording</button> -->
+      <div class="player">
+        <audio id="audioPlayer" #audioElement *ngIf="!isAudioRecording && audioBlobUrl" controls>
+          <source [src]="audioBlobUrl" type="audio/mp3">
+        </audio>
+      </div>
+      <div class="file-actions" *ngIf="!isAudioRecording && audioBlobUrl">
+        <button class="cancel" (click)="clearAudioRecordedData()">Clear</button>
+        <button class="save" (click)="continue()">
+          Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
