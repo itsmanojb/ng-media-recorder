@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { AudioRecordingService } from './services/audio-recording.service';
+import { VideoRecordingService } from './services/video-recording.service';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,10 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    AudioRecordingService,
+    VideoRecordingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
